@@ -1,0 +1,15 @@
+.todo-detail,
+.card {
+  width: 70vw;
+  &.card {
+    position: relative;
+    .card-action-buttons {
+      position: absolute;
+      right: 20px;
+      top: 0px;
+    }
+    h2 {
+      margin-left: 20px;
+    }
+  }
+}
