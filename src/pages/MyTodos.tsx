@@ -16,9 +16,14 @@ import { Add, Done } from '@material-ui/icons';
 import * as TodoActions from '../redux/todos/todos.actions';
 
 import TodoItem from '../components/TodoItem';
-import { RootState } from '../redux/store';
 import { Todo } from '../types';
 import './MyTodos.scss';
+import {
+  selectCompletedTodos,
+  selectError,
+  selectPendingTodos,
+  selectAllTodos,
+} from '../redux/todos/todos.selectors';
 
 interface MyTodosState {
   todos: Todo[];
@@ -29,11 +34,9 @@ const MyTodos: React.FC = () => {
   /**
    * Select todos from state
    */
-  const { todos, error } = useSelector<RootState, MyTodosState>(
-    (state: RootState) => {
-      return { todos: state.todos, error: state.error };
-    }
-  );
+  const todos = useSelector(selectAllTodos);
+  const error = useSelector(selectError);
+
   const dispatch = useDispatch();
 
   /**
